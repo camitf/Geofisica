@@ -14,7 +14,6 @@ const prerequisitos = {
   'mecanica': ['anyp','AM2','fisica2'],
   'analisisseñales': ['anyp', 'mates2', 'estadistica'],
 };
-
 // Funciones para guardar y cargar progreso en localStorage
 function obtenerAprobados() {
   const data = localStorage.getItem('mallaAprobados');
@@ -25,9 +24,16 @@ function guardarAprobados(aprobados) {
   localStorage.setItem('mallaAprobados', JSON.stringify(aprobados));
 }
 
-// Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos
+// Calcula el total de créditos de ramos aprobados
+function calcularCreditosAprobados() {
+  const aprobados = obtenerAprobados();
+  return aprobados.reduce((sum, ramo) => sum + (creditos[ramo] || 0), 0);
+}
+
+// Actualiza qué ramos están desbloqueados o bloqueados según prerrequisitos y créditos especiales
 function actualizarDesbloqueos() {
   const aprobados = obtenerAprobados();
+  const totalCreditos = calcularCreditosAprobados();
 
   for (const [destino, reqs] of Object.entries(prerequisitos)) {
     const elem = document.getElementById(destino);
@@ -35,6 +41,17 @@ function actualizarDesbloqueos() {
 
     // Verificar si se cumplen prerrequisitos normales
     let puedeDesbloquear = reqs.every(r => aprobados.includes(r));
+
+    // Reglas especiales con créditos para ciertos módulos
+    if (destino === 'modulo1') {
+      puedeDesbloquear = totalCreditos >= 90;
+    }
+    if (destino === 'modulo2') {
+      puedeDesbloquear = aprobados.includes('modulo1') && totalCreditos >= 170;
+    }
+    if (destino === 'internado_electivo' || destino === 'internado_electivo1') {
+      puedeDesbloquear = totalCreditos >= 240;
+    }
 
     if (!elem.classList.contains('aprobado')) {
       if (puedeDesbloquear) elem.classList.remove('bloqueado');
@@ -81,4 +98,5 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   actualizarDesbloqueos();
+});();
 });
