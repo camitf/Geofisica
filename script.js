@@ -2,7 +2,7 @@
 const prerequisitos = {
   'refe': ['algebra'],
   'anyp': ['AM1', 'algebra'],
-  'AM"': ['AM1','algebra'],
+  'AM2': ['AM1','algebra'],
   'fisica1': ['AM1'],
   'mates1': ['AM2'],
   'fisica2': ['fisica1'],
