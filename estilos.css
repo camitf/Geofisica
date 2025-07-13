@@ -84,3 +84,7 @@ h1 {
   font-style: italic;
   box-shadow: 4px 4px 8px #8a69a2, -4px -4px 8px #c6aee1;
 }
+  text-decoration: line-through;
+  font-style: italic;
+  box-shadow: 4px 4px 8px #8a69a2, -4px -4px 8px #c6aee1;
+}
