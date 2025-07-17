@@ -75,12 +75,12 @@ h1 {
   box-shadow: none;
   background: none;
 }
+
 .ramo.aprobado {
-  background: linear-gradient(145deg, #a6dada, #79baba) !important;
-  color: #154a4a;
-  border-color: #1b5e5e;
+  background: linear-gradient(145deg, #d1bee7, #b695d3) !important;
+  color: #4a148c;
+  border-color: #6a1b9a;
   text-decoration: line-through;
   font-style: italic;
-  box-shadow: 4px 4px 8px #6a9d9e, -4px -4px 8px #b8e1e1;
+  box-shadow: 4px 4px 8px #8a69a2, -4px -4px 8px #c6aee1;
 }
-
