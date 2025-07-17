@@ -10,7 +10,7 @@ const prerequisitos = {
   'mates2': ['mates1'],
   'fisica3': ['AM2','fisica2'],
   'estadistica': ['AM2'],
-  'geodesia': ['geogral','refe','fisica2','mates2','estadistica],
+  'geodesia': ['geogral','refe','fisica2','mates2','estadistica'],
   'mecanica': ['anyp','AM2','fisica2'],
   'analisisseñales': ['anyp', 'mates2', 'estadistica'],
 };
